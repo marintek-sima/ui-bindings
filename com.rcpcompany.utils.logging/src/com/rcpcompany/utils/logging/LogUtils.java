@@ -10,9 +10,11 @@
  *******************************************************************************/
 package com.rcpcompany.utils.logging;
 
+import java.util.ArrayList;
 import java.util.Dictionary;
 
 import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.ILogListener;
 import org.eclipse.jdt.annotation.Nullable;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
@@ -74,6 +76,29 @@ public final class LogUtils {
 		LogUtilsImpl.getInstance().log(context, LogService.LOG_ERROR, message, null);
 	}
 
+	/**
+	 * List of log listeners.
+	 */
+	private static ArrayList<ILogListener> listeners = new ArrayList<ILogListener>();
+	
+	/**
+	 * Adds a new log listener to this utility class.
+	 * 
+	 * @param listener the listener to add
+	 */
+	public static void addListener(ILogListener listener) {
+		listeners.add(listener);
+	}
+
+	/**
+	 * Removes an existing log listener from this utility class.
+	 * 
+	 * @param listener the listener to remove
+	 */
+	public static void removeListener(ILogListener listener) {
+		listeners.remove(listener);
+	}
+	
 	/**
 	 * Logs the specified warning message.
 	 * 
