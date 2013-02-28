@@ -118,6 +118,11 @@ public interface IValidatorAdapterManager {
 	void validate();
 
 	/**
+	 * Immediately validate all changed object roots.
+	 */
+	void forceValidate();
+
+	/**
 	 * Adds the specified decorator to this manager and populates it with all relevant messages.
 	 * 
 	 * @param decorator the new decorator

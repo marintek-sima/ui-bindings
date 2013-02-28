@@ -272,6 +272,45 @@ public class ValidatorAdapterManager extends EventManager implements IValidatorA
 		}
 	}
 
+	/**
+	 * 
+	 */
+	@Override
+	public void forceValidate() {
+		myNextValidation = System.currentTimeMillis();
+		if (validationPaused) return;
+		myChangedObjects.clear();
+		myUnboundMessages.clear();
+		for (final ValidationRoot r : myValidationRoots.values()) {
+			r.markValidationDone();
+			for (final ValidationRootAdapter vra : r.getAdapters()) {
+				vra.validate();
+			}
+		}
+		if (Activator.getDefault().TRACE_VALIDATION_RESULT) {
+			final StringBuilder sb = new StringBuilder(200);
+			for (final IBindingMessage m : getUnboundMessages()) {
+				sb.append("\n  " + m);
+			}
+			LogUtils.debug(this, "Results:" + sb);
+		}
+		if (myChangedObjects.size() > 0) {
+			myCurrentObjects.clear();
+			for (final IBindingMessage m : getUnboundMessages()) {
+				for (final IBindingMessageTarget t : m.getTargets()) {
+					myCurrentObjects.add(t.getModelObject());
+				}
+			}
+			for (final Object l : getListeners()) {
+				try {
+					((IValidationAdapterManagerChangeListener) l).affectedObjectsChanged(myChangeEvent);
+				} catch (final Exception ex) {
+					LogUtils.error(l, ex);
+				}
+			}
+		}
+	}
+
 	@Override
 	public void executeWithoutValidation(Runnable runnable) {
 		try {
