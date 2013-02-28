@@ -126,7 +126,12 @@ public interface ITableCreator extends IDisposable {
 	int RESIZE = 0x800;
 
 	/**
-	 * Returns the viewer binding for the table.
+	 * Style for a table that does not sort.
+	 */
+	int NO_SORT = SWT.CLIP_CHILDREN;
+
+	/**
+	 * /** Returns the viewer binding for the table.
 	 * 
 	 * @return the binding
 	 */
