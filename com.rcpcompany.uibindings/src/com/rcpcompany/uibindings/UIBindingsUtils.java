@@ -371,6 +371,19 @@ public final class UIBindingsUtils {
 	}
 
 	/**
+	 * Returns whether the two objects are equal or both <code>null</code>.
+	 * 
+	 * @param a object a
+	 * @param b object b
+	 * @return true if a and b are equal or both are <code>null</code>
+	 */
+	public static boolean equals(Object a, Object b) {
+		if (a == b) return true;
+		if (a == null) return false;
+		return a.equals(b);
+	}
+
+	/**
 	 * Constructs and returns a new simple editing domain suitable for UI Bindings.
 	 * 
 	 * @return the new editing domain
