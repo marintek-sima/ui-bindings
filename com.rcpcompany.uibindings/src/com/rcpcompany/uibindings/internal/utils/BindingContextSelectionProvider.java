@@ -326,7 +326,9 @@ public class BindingContextSelectionProvider extends AbstractContextMonitor impl
 		// }
 		// });
 
-		myPopupMenuExtender = new PopupMenuExtender(mySite.getId(), myMenuManager, this, mySite.getPart(), false);
+		// FIXME: Path is not correct
+		// myPopupMenuExtender = new PopupMenuExtender(mySite.getId(), myMenuManager, this,
+		// mySite.getPart(), false);
 	}
 
 	protected void setFocusControl(Control newFocusControl) {
