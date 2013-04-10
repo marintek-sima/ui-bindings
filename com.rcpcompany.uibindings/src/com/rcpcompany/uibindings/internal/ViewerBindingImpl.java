@@ -1337,6 +1337,7 @@ public class ViewerBindingImpl extends ContainerBindingImpl implements IViewerBi
 				context.putSourceValue(Constants.SOURCES_ACTIVE_BINDING_FEATURE, labelBinding.getModelFeature());
 				context.putSourceValue(Constants.SOURCES_ACTIVE_BINDING_UNSETTABLE, labelBinding.getDataType()
 						.isUnsettable());
+				context.putSourceValue(Constants.SOURCES_ACTIVE_BINDING_IS_SET, isSet(labelBinding));
 			}
 			context.putSourceValue(Constants.SOURCES_ACTIVE_BINDING_VALUE_DISPLAY, ci.getDisplayText());
 
@@ -1344,6 +1345,13 @@ public class ViewerBindingImpl extends ContainerBindingImpl implements IViewerBi
 		}
 
 		context.setSelectionProvider(getViewer());
+	}
+
+	private boolean isSet(IValueBinding vb) {
+		final EObject eObject = vb.getModelObject();
+		final EStructuralFeature feature = vb.getModelFeature();
+		if (eObject == null || feature == null) return false;
+		return eObject.eIsSet(feature);
 	}
 
 	@Override

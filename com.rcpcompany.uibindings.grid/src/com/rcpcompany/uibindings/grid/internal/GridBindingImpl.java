@@ -1306,6 +1306,7 @@ public class GridBindingImpl extends ContainerBindingImpl implements IGridBindin
 				context.putSourceValue(Constants.SOURCES_ACTIVE_BINDING_MODEL_OBJECT, dataType.getDataType());
 			}
 			if (objectValue != null) {
+				context.putSourceValue(Constants.SOURCES_ACTIVE_BINDING_OBSERVABLE, objectValue);
 				context.putSourceValue(Constants.SOURCES_ACTIVE_BINDING_VALUE, objectValue.getValue());
 			}
 			context.putSourceValue(Constants.SOURCES_ACTIVE_BINDING_VALUE_DISPLAY, currentCell.getDisplayText());

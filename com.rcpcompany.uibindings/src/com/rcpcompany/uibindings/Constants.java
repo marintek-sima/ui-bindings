@@ -572,6 +572,13 @@ public interface Constants {
 	String SOURCES_ACTIVE_BINDING_UNSETTABLE = SOURCES_ACTIVE_BINDING + "#unsettable"; //$NON-NLS-1$
 
 	/**
+	 * Source provider name for whether the active binding where feature eIsSet is true.
+	 * <p>
+	 * The type of the value is {@link Boolean}.
+	 */
+	String SOURCES_ACTIVE_BINDING_IS_SET = SOURCES_ACTIVE_BINDING + "#isSet"; //$NON-NLS-1$
+
+	/**
 	 * Source provider name for the "open command" of the current binding if any is defined.
 	 * <p>
 	 * The type of the value is {@link ParameterizedCommand}.
@@ -584,6 +591,13 @@ public interface Constants {
 	 * The type of the value is {@link String}.
 	 */
 	String SOURCES_ACTIVE_BINDING_TYPE = SOURCES_ACTIVE_BINDING + "#type"; //$NON-NLS-1$
+
+	/**
+	 * Source provider name for the binding type of the active binding or <code>null</code>.
+	 * <p>
+	 * The type of the value is {@link String}.
+	 */
+	String SOURCES_ACTIVE_BINDING_OBSERVABLE = SOURCES_ACTIVE_BINDING + "#observable"; //$NON-NLS-1$
 
 	/**
 	 * Source provider name for the model object of the active binding or <code>null</code>.

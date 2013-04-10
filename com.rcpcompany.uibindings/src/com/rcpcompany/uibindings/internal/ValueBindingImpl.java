@@ -1490,7 +1490,9 @@ public class ValueBindingImpl extends BindingImpl implements IValueBinding {
 			context.putSourceValue(Constants.SOURCES_ACTIVE_BINDING_RO, !isChangeable()); // TODO
 																							// ??
 			context.putSourceValue(Constants.SOURCES_ACTIVE_BINDING_UNSETTABLE, dataType.isUnsettable());
+			context.putSourceValue(Constants.SOURCES_ACTIVE_BINDING_IS_SET, isSet());
 
+			context.putSourceValue(Constants.SOURCES_ACTIVE_BINDING_OBSERVABLE, v);
 			context.putSourceValue(Constants.SOURCES_ACTIVE_BINDING_VALUE, v.getValue());
 			context.putSourceValue(Constants.SOURCES_ACTIVE_BINDING_VALUE_DISPLAY, getUIAttribute().getCurrentValue()
 					.getValue());
@@ -1502,6 +1504,13 @@ public class ValueBindingImpl extends BindingImpl implements IValueBinding {
 			LogUtils.error(this, "Unknown kind: " + getModelKind());
 		}
 		context.addObservedValue(getUIAttribute().getCurrentValue());
+	}
+
+	private boolean isSet() {
+		final EObject eObject = getModelObject();
+		final EStructuralFeature feature = getModelFeature();
+		if (eObject == null || feature == null) return false;
+		return eObject.eIsSet(feature);
 	}
 
 	@Override
