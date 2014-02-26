@@ -58,7 +58,7 @@
 		<module>../com.rcpcompany.uibindings.model.utils.tests</module>
 
 		<!-- <module>../com.rcpcompany.uibindings.updatesite</module> -->
-		<module>../com.rcpcompany.updatesite</module>
+		<!-- <module>../com.rcpcompany.updatesite</module> -->
 		<!-- <module>../com.rcpcompany.updatesite.tests</module> -->
 	</modules>
 
